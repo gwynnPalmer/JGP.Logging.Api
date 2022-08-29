@@ -12,7 +12,7 @@ jobs:
     env:
       BUILD_CONFIG: 'Release'
       SOLUTION: 'JGP.Logging.Api.sln'
-	  JGP_GITHUB_APIKEY: ${{secrets.PACKAGE_API_TOKEN}}
+      JGP_GITHUB_APIKEY: ${{secrets.PACKAGE_API_TOKEN}}
 
     runs-on: ubuntu-latest
 
