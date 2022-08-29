@@ -14,6 +14,7 @@
 
 namespace JGP.Logging.Services
 {
+    using System.Diagnostics;
     using Core;
     using Core.Commands;
     using Data.EntityFramework;
@@ -124,14 +125,18 @@ namespace JGP.Logging.Services
 
         public void Throw()
         {
+            var stopWatch = Stopwatch.StartNew();
             try
             {
-                throw new NotImplementedException();
+                _logger.LogInformation("I'm about to throw an exception!");
+                throw new NotImplementedException("Here's an exception message!", new Exception("I'm another exception!"));
             }
             catch (Exception e)
             {
                 _logger.LogError(e, "Threw test exception");
             }
+            stopWatch.Stop();
+            _logger.LogInformation($"Logging Task took {stopWatch.ElapsedMilliseconds}ms");
         }
     }
 }

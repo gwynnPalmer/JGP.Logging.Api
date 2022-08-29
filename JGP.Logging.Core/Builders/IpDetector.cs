@@ -14,28 +14,25 @@
 
 namespace JGP.Logging.Core.Builders;
 
-using System.Net;
-using System.Net.Sockets;
-
 /// <summary>
 ///     Class IpDetector.
 /// </summary>
 internal class IpDetector
 {
     /// <summary>
+    ///     The check URL
+    /// </summary>
+    private const string CheckUrl = @"https://checkip.amazonaws.com/";
+
+    /// <summary>
     ///     The default ip
     /// </summary>
     private const string DefaultIp = "127.0.0.1";
 
     /// <summary>
-    ///     The host
+    ///     The client
     /// </summary>
-    private const string Host = "8.8.8.8";
-
-    /// <summary>
-    ///     The port
-    /// </summary>
-    private const int Port = 65530;
+    private static readonly HttpClient Client = new();
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="IpDetector" /> class.
@@ -50,16 +47,14 @@ internal class IpDetector
     /// <returns>System.String.</returns>
     public static string GetIpAddress()
     {
-        try
-        {
-            using var socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0);
-            socket.Connect(Host, Port);
-            var endPoint = socket.LocalEndPoint as IPEndPoint;
-            return endPoint?.Address.ToString() ?? DefaultIp;
-        }
-        catch (Exception)
-        {
-            return DefaultIp;
-        }
+        var publicIp = Client.GetStringAsync(CheckUrl)
+            .GetAwaiter()
+            .GetResult()
+            .Replace("\n", string.Empty)
+            .Trim();
+
+        return string.IsNullOrWhiteSpace(publicIp)
+            ? DefaultIp
+            : publicIp;
     }
 }
