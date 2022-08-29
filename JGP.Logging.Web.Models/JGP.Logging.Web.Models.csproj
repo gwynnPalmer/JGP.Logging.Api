@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <Description>Logging API Web Models</Description>
+	  <PackageId>JGP.Logging.Web.Models</PackageId>
+	  <PackageDescription>Logging API Web Models</PackageDescription>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JGP.Logging.Core\JGP.Logging.Core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\common.props" />
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Description>Adds ability to log to pre-allocated context</Description>
+		<PackageId>JGP.Logging.NativeLogging</PackageId>
+		<PackageDescription>Adds ability to log to pre-allocated context</PackageDescription>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\JGP.Logging.Core\JGP.Logging.Core.csproj" />
+	</ItemGroup>
+
+</Project>

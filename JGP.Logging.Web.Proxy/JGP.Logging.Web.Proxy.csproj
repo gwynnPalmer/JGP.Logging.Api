@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <Description>Logging API Web Proxy</Description>
+	  <PackageId>JGP.Logging.Web.Proxy</PackageId>
+	  <PackageDescription>Logging API Web Proxy</PackageDescription>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JGP.Api.KeyManagement" Version="1.0.0" />
+    <PackageReference Include="JGP.Core" Version="1.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JGP.Logging.Web.Models\JGP.Logging.Web.Models.csproj" />
+  </ItemGroup>
+
+</Project>
