@@ -63,7 +63,7 @@ namespace JGP.Logging.Api.Controllers
         [HttpPost("logerror")]
         public async Task<IActionResult> Log([Required] LogItemModel model)
         {
-            var receipt = await _loggingService.CreateLogItemAsync(model.GetCreateCommand());
+            var receipt = await _loggingService.CreateLogItemAsync(model.GetCommand());
             return receipt.Outcome switch
             {
                 ActionOutcome.Exception => BadRequest(receipt),

@@ -48,6 +48,11 @@ namespace JGP.Logging.Web.Models
             Source = logItem.Source;
             Message = logItem.Message;
             StackTrace = logItem.StackTrace;
+
+            if (logItem.AdditionalInfo != null)
+            {
+                AdditionalInfo = new AdditionalInfoModel(logItem.AdditionalInfo);
+            }
         }
 
         /// <summary>
@@ -117,10 +122,17 @@ namespace JGP.Logging.Web.Models
         public string StackTrace { get; set; }
 
         /// <summary>
+        ///     Gets or sets the additional information.
+        /// </summary>
+        /// <value>The additional information.</value>
+        [JsonPropertyName("additionalInfo")]
+        public AdditionalInfoModel? AdditionalInfo { get; set; }
+
+        /// <summary>
         ///     Gets the create command.
         /// </summary>
         /// <returns>LogItemCommand.</returns>
-        public LogItemCommand GetCreateCommand()
+        public LogItemCommand GetCommand()
         {
             return new LogItemCommand
             {
@@ -130,7 +142,8 @@ namespace JGP.Logging.Web.Models
                 OccurredOn = OccurredOn,
                 Project = Project,
                 Source = Source,
-                StackTrace = StackTrace
+                StackTrace = StackTrace,
+                AdditionalInfo = AdditionalInfo?.GetCommand()
             };
         }
     }

@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JGP.Logging.Web.Models", "J
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JGP.Logging.Web.Proxy", "JGP.Logging.Web.Proxy\JGP.Logging.Web.Proxy.csproj", "{23D97FBD-D1B6-4698-816E-24F768D699ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JGP.Logging.NativeLogging", "JGP.Logging.NativeLogging\JGP.Logging.NativeLogging.csproj", "{A86A36DF-3882-4622-B487-83182E83DB0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JGP.Logging.NativeLogging", "JGP.Logging.NativeLogging\JGP.Logging.NativeLogging.csproj", "{A86A36DF-3882-4622-B487-83182E83DB0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JGP.Logging.Middleware", "JGP.Logging.Middleware\JGP.Logging.Middleware.csproj", "{64959783-3C8D-4FD1-ABFC-A62338A6B078}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{A86A36DF-3882-4622-B487-83182E83DB0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A86A36DF-3882-4622-B487-83182E83DB0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A86A36DF-3882-4622-B487-83182E83DB0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64959783-3C8D-4FD1-ABFC-A62338A6B078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64959783-3C8D-4FD1-ABFC-A62338A6B078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64959783-3C8D-4FD1-ABFC-A62338A6B078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64959783-3C8D-4FD1-ABFC-A62338A6B078}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,6 +12,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="JGP.Api.KeyManagement" Version="1.0.0" />
 		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.0" />
 	</ItemGroup>
 
