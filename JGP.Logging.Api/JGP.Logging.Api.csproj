@@ -8,10 +8,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="JGP.Api.KeyManagement" Version="1.0.0" />
+		<PackageReference Include="JGP.Api.KeyManagement" Version="1.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

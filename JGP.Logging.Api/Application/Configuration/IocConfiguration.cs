@@ -12,43 +12,44 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace JGP.Logging.Api.Application.Configuration
+using JGP.Api.KeyManagement.Authentication.Extensions;
+using JGP.Logging.Data.EntityFramework;
+using JGP.Logging.Services;
+using Microsoft.EntityFrameworkCore;
+
+namespace JGP.Logging.Api.Application.Configuration;
+
+/// <summary>
+///     Class IocConfiguration.
+/// </summary>
+internal static class IocConfiguration
 {
-    using Data.EntityFramework;
-    using JGP.Api.KeyManagement.Authentication;
-    using Microsoft.EntityFrameworkCore;
-    using Services;
-
     /// <summary>
-    ///     Class IocConfiguration.
+    ///     Configures the specified services.
     /// </summary>
-    internal static class IocConfiguration
+    /// <param name="services">The services.</param>
+    /// <param name="configuration">The configuration.</param>
+    public static void Configure(IServiceCollection services, IConfiguration configuration)
     {
-        /// <summary>
-        ///     Configures the specified services.
-        /// </summary>
-        /// <param name="services">The services.</param>
-        /// <param name="configuration">The configuration.</param>
-        public static void Configure(IServiceCollection services, IConfiguration configuration)
-        {
-            // Configuration.
-            services.AddSingleton(configuration);
+        // Configuration.
+        services.AddSingleton(configuration);
 
-            // Logging.
-            LoggingConfiguration.Configure(services, configuration);
+        // Logging.
+        LoggingConfiguration.Configure(services, configuration);
 
-            // Context.
-            var connectionString = configuration.GetConnectionString("LogContext");
-            services.AddDbContext<LogContext>(options =>
-                options.UseSqlServer(connectionString, optionsBuilder =>
-                    optionsBuilder.EnableRetryOnFailure(3, TimeSpan.FromSeconds(3), null)));
+        // Context.
+        var connectionString = configuration.GetConnectionString("LogContext");
+        services.AddDbContext<LogContext>(options =>
+            options.UseSqlServer(connectionString, optionsBuilder =>
+                optionsBuilder.EnableRetryOnFailure(3, TimeSpan.FromSeconds(3), null)));
 
-            // Custom Api Key Middleware
-            services.AddApiKeyManagement(configuration);
+        services.AddMemoryCache();
 
-            // Services.
-            services.AddTransient<ILogContext, LogContext>();
-            services.AddTransient<ILoggingService, LoggingService>();
-        }
+        // Custom Api Key Middleware
+        services.AddApiKeyManagement(configuration);
+
+        // Services.
+        services.AddTransient<ILogContext, LogContext>();
+        services.AddTransient<ILoggingService, LoggingService>();
     }
 }
